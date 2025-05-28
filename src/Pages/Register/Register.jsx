@@ -3,8 +3,6 @@ import React, { use } from "react";
 import registerLottie from "../../assets/lottie-animation/register-lottie.json";
 import { AuthContext } from "../../Contexts/AuthContext/AuthContext";
 import Lottie from "lottie-react";
-import toast from "react-hot-toast";
-import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
 import { showSweetNotify, showToastError } from "../../Utility/notification";
 import SocialLogin from "../../Shared/SocialLogin";
@@ -34,9 +32,13 @@ const Register = () => {
 
   return (
     <div>
-      <div className="bg-base-100 max-w-3xl mx-auto my-10">
+      <div 
+      data-aos="fade-in"
+      data-aos-duration="1000"
+      data-aos-once="false"
+       className="bg-base-100 max-w-4xl mx-auto my-10">
         <div className="flex items-center justify-center gap-8">
-          <div className="flex-1 p-8 max-w-xl border border-base-300 shadow-xs rounded-2xl">
+          <div className="flex-1 p-8 max-w-2xl border border-base-300 shadow-xs rounded-2xl">
             <form onSubmit={handleRegister} className="form-control">
               <fieldset className="fieldset mx-auto items-center">
                 <h1 className="text-3xl font-bold text-center">
@@ -113,7 +115,7 @@ const Register = () => {
             <SocialLogin/>
           </div>
           <div>
-            <Lottie animationData={registerLottie} loop={true} />
+            <Lottie style={{ width: "300px" }} animationData={registerLottie} loop={true} />
           </div>
         </div>
       </div>

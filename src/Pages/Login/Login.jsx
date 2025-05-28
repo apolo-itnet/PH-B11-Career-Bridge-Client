@@ -10,7 +10,7 @@ import SocialLogin from "../../Shared/SocialLogin";
 
 const Login = () => {
   const { logIn } = use(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   // Function login handler
   const handleLogin = (event) => {
@@ -30,7 +30,7 @@ const Login = () => {
         // Redirect or show success message
         showSweetNotify("Login successful!");
         form.reset();
-        // Optionally, you can redirect the user to another page 
+        // Optionally, you can redirect the user to another page
         navigate("/"); // Assuming you have a navigate function from react-router
       })
       .catch((error) => {
@@ -42,7 +42,12 @@ const Login = () => {
 
   return (
     <div>
-      <div className="bg-base-100 max-w-4xl mx-auto my-10">
+      <div
+        data-aos="fade-in"
+        data-aos-duration="1000"
+        data-aos-once="false"
+        className="bg-base-100 max-w-4xl mx-auto my-10"
+      >
         <div className="flex items-center justify-center gap-8">
           <div className="flex-1 p-8 max-w-xl border border-base-300 shadow-xs rounded-2xl">
             <form onSubmit={handleLogin} className="form-control">
@@ -65,10 +70,12 @@ const Login = () => {
                 <div>
                   <a className="link link-hover">Forgot password?</a>
                 </div>
-                <button className="btn btn-primary mt-4 shadow-none text-base-100">Login</button>
+                <button className="btn btn-primary mt-4 shadow-none text-base-100">
+                  Login
+                </button>
               </fieldset>
             </form>
-            <SocialLogin/>
+            <SocialLogin />
           </div>
           <div>
             <Lottie size={300} animationData={loginLottie} loop={true} />

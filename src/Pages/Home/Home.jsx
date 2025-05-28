@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Banner from "./Banner";
 import LatestJobs from "./LatestJobs";
+
 
 const jobsPromise = fetch("http://localhost:3000/jobs").then((res) =>
   res.json()
 );
 
 const Home = () => {
+
   return (
     <div>
       <Banner></Banner>
