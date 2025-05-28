@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router';
 import Navbar from '../Shared/Navbar';
 import Footer from '../Shared/Footer';
+import "aos/dist/aos.css";
 
 const RootLayout = () => {
   return (

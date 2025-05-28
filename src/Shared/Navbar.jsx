@@ -94,17 +94,17 @@ const Navbar = () => {
 
               <button
                 onClick={handleLogout}
-                className="btn btn-primary text-base-100"
+                className="btn text-base-100 rounded-lg border border-transparent bg-blue-600  hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
               >
                 Logout
               </button>
             </div>
           ) : (
             <div className="flex items-center gap-4">
-              <NavLink to="/login" className="w-24 btn text-base-100 rounded-lg border border-transparent bg-blue-600  hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+              <NavLink to="/login" className="w-24 btn btn-primary">
                 Login
               </NavLink>
-              <NavLink to="/register" className="w-24 btn text-base-100 rounded-lg border border-transparent bg-blue-600  hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+              <NavLink to="/register" className="w-24 btn btn-secondary">
                 Register
               </NavLink>
             </div>

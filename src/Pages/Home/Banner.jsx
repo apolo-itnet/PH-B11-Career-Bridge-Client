@@ -5,7 +5,7 @@ const Banner = () => {
   return (
     <div>
       {/* Hero */}
-      <div className="w-full mx-auto  h-[calc(100vh-4rem)] flex items-center justify-center bg-base-200 text-base-content">
+      <div className="w-full mx-auto h-[calc(100vh-4rem)] flex items-center justify-center bg-base-200 text-base-content responsive-padding">
         <div className="flex justify-between items-center gap-8">
           <div className="w-full sm:w-1/2 lg:w-2/3">
             <motion.h1 className="block text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl 2xl:text-8xl">
@@ -53,7 +53,7 @@ const Banner = () => {
 
           <div className="w-full sm:w-1/2 lg:w-2/3">
             <motion.img
-              className="md:w-md lg:w-lg xl:w-xl 2xl:w-2xl w-full object-cover object-center absolute top-15 right-30 mt-4 sm:mt-8 rounded-tr-4xl rounded-tl-4xl rounded-br-4xl  border-s-8 border-b-8 border-blue-500"
+              className="md:w-sm lg:w-md xl:w-xl 2xl:w-2xl w-full object-cover object-center absolute top-15 right-30 mt-4 sm:mt-8 rounded-tr-4xl rounded-tl-4xl rounded-br-4xl  border-s-8 border-b-8 border-blue-500"
               src={"https://i.postimg.cc/25863xZH/Team-1.webp"}
               alt="Hero Image 1"
               animate={{ y: [0, 20, 0] }}
