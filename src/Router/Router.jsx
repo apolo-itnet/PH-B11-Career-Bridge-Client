@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { createBrowserRouter } from "react-router";
 import RootLayout from "../Layouts/RootLayout";
 import Home from "../Pages/Home/Home";
@@ -7,6 +7,8 @@ import Login from "../Pages/Login/Login";
 import JobDetails from "../Pages/JobDetails/JobDetails";
 import JobApply from "../Pages/JobApply/JobApply";
 import PrivateRoutes from "../Routes/PrivateRoutes";
+import MyApplication from "../Pages/MyApplication/MyApplication";
+import AddJob from "../Pages/AddJob/AddJob";
 
 const Router = createBrowserRouter([
   {
@@ -35,12 +37,29 @@ const Router = createBrowserRouter([
       },
       {
         path: "/jobApply/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/jobs/${params.id}`),
         element: (
           <PrivateRoutes>
             <JobApply></JobApply>
           </PrivateRoutes>
         ),
       },
+      {
+        path: "/my-application",
+        element: (
+          <PrivateRoutes>
+            <MyApplication></MyApplication>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/add-job",
+        element: 
+        <PrivateRoutes>
+          <AddJob></AddJob>
+        </PrivateRoutes>
+      }
     ],
   },
 ]);

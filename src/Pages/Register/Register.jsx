@@ -6,10 +6,12 @@ import Lottie from "lottie-react";
 import { updateProfile } from "firebase/auth";
 import { showSweetNotify, showToastError } from "../../Utility/notification";
 import SocialLogin from "../../Shared/SocialLogin";
+import { useNavigate } from "react-router";
 
 const Register = () => {
   // Function to handle form submission
   const { createUser } = use(AuthContext);
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -24,6 +26,7 @@ const Register = () => {
 
       showSweetNotify("Registration successful!");
       form.reset();
+      navigate("/login");
     } catch (err) {
       console.error("Registration Error:", err);
       showToastError(`Registration failed: ${err.message}`);
@@ -32,11 +35,11 @@ const Register = () => {
 
   return (
     <div>
-      <div 
-      data-aos="fade-in"
-      data-aos-duration="1000"
-      data-aos-once="false"
-       className="bg-base-100 max-w-4xl mx-auto my-10">
+      <div
+        data-aos="fade-in"
+        data-aos-duration="1000"
+        className="bg-base-100 max-w-4xl mx-auto my-10"
+      >
         <div className="flex items-center justify-center gap-8">
           <div className="flex-1 p-8 max-w-2xl border border-base-300 shadow-xs rounded-2xl">
             <form onSubmit={handleRegister} className="form-control">
@@ -112,10 +115,14 @@ const Register = () => {
                 <button className="btn btn-neutral mt-4">Register</button>
               </fieldset>
             </form>
-            <SocialLogin/>
+            <SocialLogin />
           </div>
           <div>
-            <Lottie style={{ width: "300px" }} animationData={registerLottie} loop={true} />
+            <Lottie
+              style={{ width: "300px" }}
+              animationData={registerLottie}
+              loop={true}
+            />
           </div>
         </div>
       </div>

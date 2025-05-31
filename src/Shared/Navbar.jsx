@@ -24,6 +24,21 @@ const Navbar = () => {
     <>
       <ul className="text-base-content font-semibold flex items-center gap-8">
         <NavLink>Home</NavLink>
+
+        {/* for candidate roles */}
+        {user && (
+          <>
+            <NavLink to={"/my-application"}>My Application</NavLink>
+          </>
+        )}
+
+        {/* for employer roles */}
+        {user && (
+          <>
+            <NavLink to={"/add-job"}>Add Job</NavLink>
+          </>
+        )}
+
         <NavLink>Find JOBS</NavLink>
         <NavLink>Companies</NavLink>
         <NavLink>Contact Us</NavLink>
@@ -33,7 +48,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-100 shadow-sm w-full responsive-padding">
+      <div className="navbar bg-base-100 border border-base-300 w-full responsive-padding">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

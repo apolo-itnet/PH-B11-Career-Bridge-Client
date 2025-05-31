@@ -1,16 +1,19 @@
 import React, { use } from "react";
 import { AuthContext } from "../Contexts/AuthContext/AuthContext";
 import { showSweetNotify, showToastError } from "../Utility/notification";
+import { useNavigate } from "react-router";
 
-const SocialLogin = () => {
+const SocialLogin = ({from}) => {
 
   const {logInWithGoogle} = use(AuthContext);
+  const navigate = useNavigate()
 
   // Function to handle Google login
   const handleGoogleLogin = async () => {
     try {
       await logInWithGoogle();
       showSweetNotify("Google login successful!");
+      navigate(from || "/"); 
     } catch (error) {
       console.error("Google login error:", error);
       showToastError(`Google login failed: ${error.message}`);

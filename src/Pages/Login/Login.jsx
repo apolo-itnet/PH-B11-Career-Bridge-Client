@@ -3,14 +3,17 @@ import React, { use } from "react";
 
 import loginLottie from "../../assets/lottie-animation/login-lottie.json";
 import { AuthContext } from "../../Contexts/AuthContext/AuthContext";
-import Swal from "sweetalert2";
 import { showSweetNotify, showToastError } from "../../Utility/notification";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import SocialLogin from "../../Shared/SocialLogin";
 
 const Login = () => {
   const { logIn } = use(AuthContext);
+  const location = useLocation();
   const navigate = useNavigate();
+  const from = location.state || "/";
+  // console.log("location in sign in page", location);
+
 
   // Function login handler
   const handleLogin = (event) => {
@@ -31,7 +34,7 @@ const Login = () => {
         showSweetNotify("Login successful!");
         form.reset();
         // Optionally, you can redirect the user to another page
-        navigate("/"); // Assuming you have a navigate function from react-router
+        navigate(from); // Assuming you have a navigate function from react-router
       })
       .catch((error) => {
         console.error("Login error:", error);
@@ -45,7 +48,6 @@ const Login = () => {
       <div
         data-aos="fade-in"
         data-aos-duration="1000"
-        data-aos-once="false"
         className="bg-base-100 max-w-4xl mx-auto my-10"
       >
         <div className="flex items-center justify-center gap-8">
@@ -75,7 +77,7 @@ const Login = () => {
                 </button>
               </fieldset>
             </form>
-            <SocialLogin />
+            <SocialLogin from={from} />
           </div>
           <div>
             <Lottie size={300} animationData={loginLottie} loop={true} />
