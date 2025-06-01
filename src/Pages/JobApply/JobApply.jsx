@@ -38,7 +38,7 @@ const JobApply = () => {
       .then((res) => {
         // console.log(res.data);
         if (res.data.insertedId) {
-          showSweetNotify("Your Application has been Submited!");
+          showSweetNotify("Your Application has been Submitted!");
         }
         // form.reset();
       })

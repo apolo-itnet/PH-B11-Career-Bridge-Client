@@ -55,11 +55,12 @@ const Router = createBrowserRouter([
       },
       {
         path: "/add-job",
-        element: 
-        <PrivateRoutes>
-          <AddJob></AddJob>
-        </PrivateRoutes>
-      }
+        element: (
+          <PrivateRoutes>
+            <AddJob></AddJob>
+          </PrivateRoutes>
+        ),
+      },
     ],
   },
 ]);

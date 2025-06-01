@@ -39,9 +39,6 @@ const Navbar = () => {
           </>
         )}
 
-        <NavLink>Find JOBS</NavLink>
-        <NavLink>Companies</NavLink>
-        <NavLink>Contact Us</NavLink>
       </ul>
     </>
   );

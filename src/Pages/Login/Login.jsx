@@ -22,10 +22,6 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    // Here you would typically handle the login logic, e.g., sending the data to your backend
-    console.log("Email:", email);
-    console.log("Password:", password);
-
     //Login functionality can be implemented here
     logIn(email, password)
       .then((result) => {

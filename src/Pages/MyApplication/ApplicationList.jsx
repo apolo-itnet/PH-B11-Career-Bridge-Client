@@ -2,26 +2,23 @@ import React, { use, useState } from "react";
 import { myApplicationPromise } from "../../API/applicationApi";
 
 const ApplicationList = ({ myApplicationPromise }) => {
-
   const applications = use(myApplicationPromise);
-
-  const [mongoJobs, setMongoJobs] = useState("");
 
   return (
     <div>
-      <h1 className="text-center">
-        My Application List - {applications.length}
-      </h1>
-      <div>
+      <div className="responsive-padding">
+        <h1 className="font-semibold">
+          Total Jobs Apply - {applications.length}
+        </h1>
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
             <thead>
               <tr>
                 <th>No</th>
-                <th>Name</th>
-                <th>Job</th>
-                <th>Favorite Color</th>
+                <th>Company Name</th>
+                <th>Job Title</th>
+                <th>Deadline</th>
                 <th></th>
               </tr>
             </thead>
@@ -37,25 +34,27 @@ const ApplicationList = ({ myApplicationPromise }) => {
                       <div className="avatar">
                         <div className="mask mask-squircle h-12 w-12">
                           <img
-                            src={application?.company_logo || mongoJobs?.company_logo}
+                            src={application?.company_logo}
                             alt="Avatar Tailwind CSS Component"
                           />
                         </div>
                       </div>
                       <div>
-                        <div className="font-bold">Hart Hagerty</div>
-                        <div className="text-sm opacity-50">United States</div>
+                        <div className="font-bold">{application?.company}</div>
+                        <div className="text-sm opacity-50">
+                          {application?.location}
+                        </div>
                       </div>
                     </div>
                   </td>
                   <td>
-                    Zemlak, Daniel and Leannon
+                    {application?.title}
                     <br />
                     <span className="badge badge-ghost badge-sm">
-                      Desktop Support Technician
+                      {application?.category}
                     </span>
                   </td>
-                  <td>Purple</td>
+                  <td>{application?.applicationDeadline}</td>
                   <th>
                     <button className="btn btn-ghost btn-xs">details</button>
                   </th>
