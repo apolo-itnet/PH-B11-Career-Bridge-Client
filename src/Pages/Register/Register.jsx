@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 
 import registerLottie from "../../assets/lottie-animation/register-lottie.json";
 import { AuthContext } from "../../Contexts/AuthContext/AuthContext";
@@ -7,11 +7,14 @@ import { updateProfile } from "firebase/auth";
 import { showSweetNotify, showToastError } from "../../Utility/notification";
 import SocialLogin from "../../Shared/SocialLogin";
 import { useNavigate } from "react-router";
+import { UserRoundPen, ImageIcon, Mail, Key, Phone } from "lucide-react";
+import CustomInput from "../../Shared/CustomInput";
 
 const Register = () => {
   // Function to handle form submission
   const { createUser } = use(AuthContext);
   const navigate = useNavigate();
+  const [isFieldClick, setIsFieldClick] = useState(false);
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -47,68 +50,65 @@ const Register = () => {
                 <h1 className="text-3xl font-bold text-center">
                   Register Now!
                 </h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="label">First Name</label>
-                    <input
-                      name="firstName"
-                      type="text"
-                      className="input w-full"
-                      placeholder="First Name"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="label">Last Name</label>
-                    <input
-                      name="lastName"
-                      type="text"
-                      className="input w-full"
-                      placeholder="Last Name"
-                      required
-                    />
-                  </div>
-                </div>
+
+                {/* Name Field */}
                 <div>
-                  <label className="label">Profile Photo</label>
-                  <input
-                    name="photoURL"
+                  <CustomInput
                     type="text"
-                    className="input w-full"
-                    placeholder="Profile Photo URL"
-                    required
+                    label={"Full Name"}
+                    placeholder={"Enter your full name"}
+                    icon={UserRoundPen}
                   />
                 </div>
+
+                {/* Profile Photo Field */}
                 <div>
-                  <label className="label">Phone Number</label>
-                  <input
-                    name="phoneNumber"
+                  <CustomInput
+                    type="text"
+                    label={"Profile Photo"}
+                    placeholder={"https:// URL..."}
+                    icon={ImageIcon}
+                  />
+                </div>
+
+                {/* Email Field */}
+                <div>
+                  <CustomInput
+                    type="text"
+                    label={"Email"}
+                    placeholder={"Enter your email address"}
+                    icon={Mail}
+                  />
+                </div>
+
+                {/* Password Field */}
+                <div>
+                  <CustomInput
+                    type="text"
+                    label={"Password"}
+                    placeholder={"Enter your Password"}
+                    icon={Key}
+                  />
+                </div>
+                {/* Password Field */}
+                <div>
+                  <CustomInput
+                    type="text"
+                    label={"Confirm Password"}
+                    placeholder={"Enter your Confirm Password"}
+                    icon={Key}
+                  />
+                </div>
+                {/* Number Field */}
+                <div>
+                  <CustomInput
                     type="number"
-                    className="input w-full"
-                    placeholder="Phone Number"
-                    required
+                    label={"Phone Number"}
+                    placeholder={"Enter your Phone Number"}
+                    icon={Phone}
                   />
                 </div>
-                <div>
-                  <label className="label">Email</label>
-                  <input
-                    name="email"
-                    type="email"
-                    className="input w-full"
-                    placeholder="Email"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="label">Password</label>
-                  <input
-                    name="password"
-                    type="password"
-                    className="input w-full"
-                    placeholder="Password"
-                    required
-                  />
-                </div>
+
                 <div>
                   <a className="link link-hover">Forgot password?</a>
                 </div>
@@ -117,6 +117,8 @@ const Register = () => {
             </form>
             <SocialLogin />
           </div>
+
+          {/* Lottie Animation */}
           <div>
             <Lottie
               style={{ width: "300px" }}
@@ -124,6 +126,7 @@ const Register = () => {
               loop={true}
             />
           </div>
+
         </div>
       </div>
     </div>
