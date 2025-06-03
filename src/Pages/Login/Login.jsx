@@ -6,14 +6,14 @@ import { AuthContext } from "../../Contexts/AuthContext/AuthContext";
 import { showSweetNotify, showToastError } from "../../Utility/notification";
 import { useLocation, useNavigate } from "react-router";
 import SocialLogin from "../../Shared/SocialLogin";
+import CustomInput from "../../Shared/CustomInput";
+import { Key, Mail } from "lucide-react";
 
 const Login = () => {
   const { logIn } = use(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state || "/";
-  // console.log("location in sign in page", location);
-
 
   // Function login handler
   const handleLogin = (event) => {
@@ -44,40 +44,45 @@ const Login = () => {
       <div
         data-aos="fade-in"
         data-aos-duration="1000"
-        className="bg-base-100 max-w-4xl mx-auto my-10"
+        className="bg-base-100 max-w-xl mx-auto my-10"
       >
         <div className="flex items-center justify-center gap-8">
-          <div className="flex-1 p-8 max-w-xl border border-base-300 shadow-xs rounded-2xl">
+          <div className="flex-1 p-8 w-full border border-base-300 shadow-xs rounded-2xl">
             <form onSubmit={handleLogin} className="form-control">
               <fieldset className="fieldset mx-auto items-center">
                 <h1 className="text-3xl font-bold text-center">Login Now!</h1>
-                <label className="label">Email</label>
-                <input
-                  name="email"
-                  type="email"
-                  className="input w-full focus:border-blue-500 focus:ring-blue-500 focus:outline-hidden focus:duration-300"
-                  placeholder="Email"
-                />
-                <label className="label">Password</label>
-                <input
-                  name="password"
-                  type="password"
-                  className="input w-full focus:border-blue-500 focus:ring-blue-500 focus:outline-hidden focus:duration-300"
-                  placeholder="Password"
-                />
+                {/* Email Field */}
                 <div>
-                  <a className="link link-hover">Forgot password?</a>
+                  <CustomInput
+                    type="text"
+                    label={"Email"}
+                    placeholder={"Enter your email address"}
+                    icon={Mail}
+                  />
                 </div>
-                <button className="btn btn-primary mt-4 shadow-none text-base-100">
-                  Login
+
+                {/* Password Field */}
+                <div>
+                  <CustomInput
+                    type="text"
+                    label={"Password"}
+                    placeholder={"Enter your Password"}
+                    icon={Key}
+                  />
+                </div>
+                <div>
+                  <a className="link link-hover text-blue-500 font-semibold">Forgot password?</a>
+                </div>
+                <button className="btn btn-primary mt-4 shadow-none text-base-100 flex items-center justify-center">
+                  Login 
                 </button>
               </fieldset>
             </form>
             <SocialLogin from={from} />
           </div>
-          <div>
-            <Lottie size={300} animationData={loginLottie} loop={true} />
-          </div>
+        </div>
+        <div className="absolute -right-90 top-55">
+          <Lottie size={300} animationData={loginLottie} loop={true} />
         </div>
       </div>
     </div>

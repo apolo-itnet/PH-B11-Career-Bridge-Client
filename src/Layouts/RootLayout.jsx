@@ -18,7 +18,6 @@ const RootLayout = () => {
         <Navbar />
       </div>
       <div className="flex-grow">
-        {/* This Outlet will render the child routes */}
         <Outlet />
       </div>
       <div className="mt-auto">

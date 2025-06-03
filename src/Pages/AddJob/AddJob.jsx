@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use } from "react";
 import {
   Briefcase,
   MapPin,
@@ -18,15 +18,18 @@ import {
 import JobAddStepper from "./JobAddStepper";
 import axios from "axios";
 import { showSweetNotify } from "../../Utility/notification";
+import { AuthContext } from "../../Contexts/AuthContext/AuthContext";
 
 const AddJob = () => {
+  const { user } = use(AuthContext);
+
   const handleAddJob = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
 
     const data = Object.fromEntries(formData.entries());
-    console.log(data);
+    // console.log(data);
 
     //process salary range data
     const { salaryMin, salaryMax, salaryCurrency, ...newJob } = data;
@@ -42,14 +45,14 @@ const AddJob = () => {
     newJob.responsibilities = newJob.responsibilities
       .split(",")
       .map((res) => res.trim());
-    console.log(newJob);
+    // console.log(newJob);
 
     //save job to the database
     axios
       .post("http://localhost:3000/jobs", newJob)
       .then((res) => {
         if (res.data.insertedId) {
-          console.log(res);
+          // console.log(res);
           showSweetNotify("Successfully added you job post");
         }
       })
@@ -110,19 +113,34 @@ const AddJob = () => {
           </fieldset>
 
           {/* Location */}
-          <fieldset>
-            <label className=" mb-1 text-sm font-semibold flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-blue-600" />
-              Job Location
-            </label>
-            <input
-              type="text"
-              name="location"
-              required
-              placeholder="e.g. Halishohor, Chittagong"
-              className="input w-full rounded-lg border focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:duration-300"
-            />
-          </fieldset>
+            <fieldset className="w-full">
+              <label className=" mb-1 text-sm font-semibold flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-blue-600" />
+                Job Location
+              </label>
+              <div className="flex justify-between gap-4">
+                <input
+                  type="text"
+                  name="location"
+                  required
+                  placeholder="Bashundara R/A..."
+                  className="input w-full rounded-lg border focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:duration-300"
+                />
+                <select
+                  name="district"
+                  defaultValue={"Select District"}
+                  className="select w-full rounded-lg border focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:duration-300"
+                  required
+                >
+                  <option disabled>Select District</option>
+                  <option value="Onsite">Dhaka</option>
+                  <option value="Remote">Chittagong</option>
+                  <option value="Hybrid">Khulna</option>
+                  <option value="Hybrid">Rajshahi</option>
+                  <option value="Hybrid">Sylhet</option>
+                </select>
+              </div>
+            </fieldset>
 
           {/* Job Type & Status */}
           <div className="flex justify-between items-center gap-4">
@@ -159,8 +177,9 @@ const AddJob = () => {
               >
                 <option disabled>Select Job Status</option>
                 <option value="Active">Active</option>
-                <option value="Inactive">Inactive</option>
-                <option value="Upcoming">Upcoming</option>
+                <option value="Hired">Hired</option>
+                <option value="Pending">Pending</option>
+                <option value="Interview">Interview</option>
               </select>
             </fieldset>
           </div>
@@ -314,9 +333,11 @@ const AddJob = () => {
               <input
                 type="text"
                 name="hr_name"
+                defaultValue={user?.displayName}
+                readOnly
                 required
                 placeholder="HR Name"
-                className="input w-full rounded-lg border focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:duration-300"
+                className="input w-full rounded-lg bg-gray-200 border focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:duration-300 cursor-not-allowed"
               />
             </fieldset>
 
@@ -328,6 +349,22 @@ const AddJob = () => {
               <input
                 type="email"
                 name="hr_email"
+                defaultValue={user?.email}
+                readOnly
+                required
+                placeholder="HR Email"
+                className="input w-full rounded-lg bg-gray-200 border focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:duration-300 cursor-not-allowed"
+              />
+            </fieldset>
+
+            <fieldset className="w-full">
+              <label className=" mb-1 text-sm font-semibold flex items-center gap-2">
+                <Mail className="w-4 h-4 text-blue-600" />
+                HR Email (Optional)
+              </label>
+              <input
+                type="email"
+                name="hr_email_optional"
                 required
                 placeholder="HR Email"
                 className="input w-full rounded-lg border focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:duration-300"

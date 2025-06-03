@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function CustomInput({ icon: Icon, placeholder, label, type = 'text' }) {
+export default function CustomInput({ icon: Icon, placeholder, label, type = 'text', name: name }) {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
@@ -19,8 +19,10 @@ export default function CustomInput({ icon: Icon, placeholder, label, type = 'te
           }`}
         />
         <input
+          name={name}
           type={type}
           placeholder={placeholder}
+          required
           className="bg-transparent outline-none w-full text-gray-700 placeholder:text-gray-400"
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
