@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { use } from "react";
 import { myApplicationPromise } from "../../API/applicationApi";
 
 const ApplicationList = ({ myApplicationPromise }) => {

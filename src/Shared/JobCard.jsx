@@ -25,15 +25,17 @@ const JobCard = ({ job, ...props }) => {
   return (
     <div {...props}>
       <div className="rounded-xl border border-base-300 p-4 bg-base-100 hover:border-blue-500 hover:shadow-sm hover:-translate-y-3 transition-all duration-500 space-y-4 h-full">
-        <div className="flex flex-col items-start justify-center gap-4 min-h-full ">
+        <div className="flex flex-col justify-center gap-2 min-h-full ">
           {/* Header */}
-          <div className="flex items-center gap-4 w-full mb-3">
-            <img
-              src={company_logo || "https://via.placeholder.com/48"}
-              alt="FlyChat"
-              className="w-12 h-12 rounded-md"
-            />
-            <div className="flex flex-col justify-center items-start">
+          <div className="flex items-center gap-4 w-full">
+            <div className="">
+              <img
+                src={company_logo || "https://via.placeholder.com/48"}
+                alt="FlyChat"
+                className=" w-24 h-14 object-contain rounded-md"
+              />
+            </div>
+            <div className="flex flex-col justify-center items-start border-l-2 border-gray-300 pl-2 ">
               <h3 className="text-lg font-semibold text-gray-800">{company}</h3>
               <div className="flex items-center gap-1 text-sm text-gray-500">
                 <FiMapPin />
@@ -41,8 +43,9 @@ const JobCard = ({ job, ...props }) => {
               </div>
             </div>
           </div>
+
           {/* Job Details */}
-          <div className="flex-grow space-y-3">
+          <div className="flex-grow space-y-3 py-4">
             {/* Title */}
             <h2 className="text-lg font-medium text-gray-800 text-left">
               {title}
@@ -59,7 +62,7 @@ const JobCard = ({ job, ...props }) => {
             </div>
 
             {/* Description */}
-            <p className="text-left text-sm text-gray-600 line-clamp-2">
+            <p className="text-left text-sm text-gray-500 line-clamp-2">
               {description}
             </p>
 
@@ -75,24 +78,26 @@ const JobCard = ({ job, ...props }) => {
               ))}
             </div>
           </div>
-          {/* salary & button */}
-          <div className="mt-auto w-full flex flex-col gap-2">
-            {/* Salary */}
-            <div className="text-left flex gap-2 items-center">
-              <span className="text-md font-semibold text-gray-500">
-                Salary Range:
-              </span>
-              <p className="text-indigo-600 font-semibold text-lg">
-                {salaryRange.min} - {salaryRange.max} {salaryRange.currency}
-              </p>
-              <p className="text-sm text-gray-500">/monthly</p>
-            </div>
 
-            {/* Button */}
+          {/* Salary */}
+          <div className="text-left flex gap-2 items-center mb-3">
+            <span className="text-sm font-medium text-gray-500">
+              Salary Range:
+            </span>
+            <p className="text-blue-600 font-semibold text-sm">
+              {salaryRange.salaryMin} - {salaryRange.salaryMax}{" "}
+              {salaryRange.salaryCurrency}
+            </p>
+            <p className="text-sm text-gray-500">/monthly</p>
+          </div>
+
+          {/* Button */}
+          <div className="flex w-full justify-center items-center">
             <Link to={`/jobs/${_id}`}>
-              <button className="btn btn-primary flex">Job Details</button>
+              <button className="btn btn-primary flex w-full">Job Details</button>
             </Link>
           </div>
+
         </div>
       </div>
     </div>
