@@ -55,6 +55,7 @@ const Login = () => {
                 <div>
                   <CustomInput
                     type="text"
+                    name={"email"}
                     label={"Email"}
                     placeholder={"Enter your email address"}
                     icon={Mail}
@@ -64,7 +65,8 @@ const Login = () => {
                 {/* Password Field */}
                 <div>
                   <CustomInput
-                    type="text"
+                    type="password"
+                    name={"password"}
                     label={"Password"}
                     placeholder={"Enter your Password"}
                     icon={Key}

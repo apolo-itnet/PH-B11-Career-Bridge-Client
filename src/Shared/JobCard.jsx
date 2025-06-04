@@ -32,7 +32,7 @@ const JobCard = ({ job, ...props }) => {
               <img
                 src={company_logo || "https://via.placeholder.com/48"}
                 alt="FlyChat"
-                className=" w-24 h-14 object-contain rounded-md"
+                className=" w-24 h-14 object-contain"
               />
             </div>
             <div className="flex flex-col justify-center items-start border-l-2 border-gray-300 pl-2 ">

@@ -11,6 +11,7 @@ import MyApplication from "../Pages/MyApplication/MyApplication";
 import AddJob from "../Pages/AddJob/AddJob";
 import MyPostedJobs from "../Pages/MyPostedJobs/MyPostedJobs";
 import ViewApplications from "../Pages/ViewApplications/ViewApplications";
+import { loadingNavFooter } from "../Shared/LoadingSpinner";
 
 const Router = createBrowserRouter([
   {
@@ -54,6 +55,8 @@ const Router = createBrowserRouter([
             <MyApplication></MyApplication>
           </PrivateRoutes>
         ),
+        loader: ({ params }) =>
+          fetch("http://localhost:3000/jobs"),
       },
       {
         path: "/add-job",
@@ -67,7 +70,7 @@ const Router = createBrowserRouter([
         path: "/my-posted-job",
         element: (
           <PrivateRoutes>
-            <MyPostedJobs/>
+            <MyPostedJobs />
           </PrivateRoutes>
         ),
       },
@@ -75,10 +78,12 @@ const Router = createBrowserRouter([
         path: "/applications/:job_id",
         element: (
           <PrivateRoutes>
-            <ViewApplications/>
+            <ViewApplications />
           </PrivateRoutes>
         ),
-        loader: ({params}) => fetch(`http://localhost:3000/applications/job/${params.job_id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/applications/job/${params.job_id}`),
+        hydrateFallbackElement: loadingNavFooter,
       },
     ],
   },

@@ -23,10 +23,9 @@ const ViewApplications = () => {
 
   return (
     <div>
-      <div className="responsive-padding py-10">
-        <h2>
-          {" "}
-          {applications.length} Here is the all application {job_id}
+      <div className="responsive-padding py-6">
+        <h2 className="text-3xl font-bold text-center pb-4">
+         Candidate Application List
         </h2>
         <div className="overflow-x-auto">
           <table className="table">
@@ -36,7 +35,9 @@ const ViewApplications = () => {
                 <th></th>
                 <th>Candidate Name</th>
                 <th>Job Title</th>
-                <th>Job Status</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
@@ -44,14 +45,17 @@ const ViewApplications = () => {
                 <tr key={jobs._id}>
                   <th>{index + 1}</th>
                   <td>{jobs.fullName}</td>
-                  <td>Quality Control Specialist</td>
+                  <td>{jobs.title}</td>
+                  <td>{jobs.candidate}</td>
+                  <td>{jobs.phone}</td>
                   <td>
                     <select
                       onChange={(e) => handleStatusChange(e, jobs._id)}
-                      defaultValue={jobs.status}
+                      defaultValue={jobs.jobStatus}
                       className="select"
                     >
-                      <option disabled>Update Status</option>
+                      <option disabled value={""}>Job Status</option>
+                      <option defaultValue={"Active"}>Active</option>
                       <option defaultValue={"Pending"}>Pending</option>
                       <option defaultValue={"Interview"}>Interview</option>
                       <option defaultValue={"Hired"}>Hired</option>

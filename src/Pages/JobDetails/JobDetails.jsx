@@ -27,7 +27,7 @@ const JobDetails = () => {
           <img
             src={"https://i.postimg.cc/qBQCLTbr/Tech-Office-1.webp"}
             alt={company}
-            className="w-full h-full object-cover object-center rounded-2xl"
+            className="w-full h-full object-cover object-center"
           />
         </div>
 
@@ -54,41 +54,51 @@ const JobDetails = () => {
 
               <div className="flex items-start col-span-full py-4">
                 <span className="w-28 font-medium">Industry:</span>
-                <span>Content Writer / Finance / Human Resource</span>
+                <span className="font-bold">
+                  Content Writer / Finance / Human Resource
+                </span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6 text-sm">
-                <div className="flex items-start">
-                  <span className="w-28 font-medium">Job Level:</span>
-                  <span>{category}</span>
+              <div className="flex items-center gap-10">
+                {/* left */}
+                <div className="space-y-4">
+                  <div className="flex items-start">
+                    <span className="w-28 font-medium">Job Level:</span>
+                    <span>{category}</span>
+                  </div>
+
+                  <div className="flex items-center justify-start">
+                    <span className="w-28 font-medium">Salary:</span>
+                    <span className="text-blue-600 font-bold text-base">
+                      {salaryRange?.salaryMin} - {salaryRange?.salaryMax}/- {""}
+                      {salaryRange?.salaryCurrency} /monthly
+                    </span>
+                  </div>
+
+                  <div className="flex items-start">
+                    <span className="w-28 font-medium">Job Type:</span>
+                    <span>{jobType}</span>
+                  </div>
                 </div>
 
-                <div className="flex items-start">
-                  <span className="w-28 font-medium">Open Positions:</span>
-                  <span>4</span>
-                </div>
+                {/* right  */}
+                <div className="space-y-4">
+                  <div className="flex items-start">
+                    <span className="w-fit font-medium pr-4">
+                      Open Positions:
+                    </span>
+                    <span>4</span>
+                  </div>
 
-                <div className="flex items-start">
-                  <span className="w-28 font-medium">Salary:</span>
-                  <span className="text-blue-600 font-semibold">
-                    {salaryRange.min} - {salaryRange.max} {salaryRange.currency}{" "}
-                    /monthly
-                  </span>
-                </div>
+                  <div className="flex items-start">
+                    <span className="w-fit font-medium pr-4">Experience:</span>
+                    <span>3 Year</span>
+                  </div>
 
-                <div className="flex items-start">
-                  <span className="w-28 font-medium">Experience:</span>
-                  <span>3 Year</span>
-                </div>
-
-                <div className="flex items-start">
-                  <span className="w-28 font-medium">Job Type:</span>
-                  <span>{jobType}</span>
-                </div>
-
-                <div className="flex items-start">
-                  <span className="w-28 font-medium">Location:</span>
-                  <span>{location}</span>
+                  <div className="flex items-start">
+                    <span className="w-fit font-medium pr-4">Location:</span>
+                    <span>{location}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -99,8 +109,14 @@ const JobDetails = () => {
             <div className="p-6 border border-base-300 rounded-lg">
               <div className="">
                 <div className="flex items-center justify-start gap-2 pb-6 border-b border-base-300 ">
-                  <img src={company_logo} alt="" />
-                  <p className="text-2xl font-bold">{company}</p>
+                  <img
+                    src={company_logo}
+                    alt=""
+                    className=" w-32 h-14 object-contain"
+                  />
+                  <p className="text-2xl font-bold border-l-2 border-gray-300 pl-2">
+                    {company}
+                  </p>
                 </div>
 
                 <div className="flex items-start py-3">
